@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.StreamSupport;
 
 /**
@@ -21,9 +22,9 @@ import java.util.stream.StreamSupport;
 public class LexicalAnalyzer {
     private final SymbolTable symbolTable;
     //字符缓冲区
-    private ArrayList<String> strbuf = new ArrayList<>();
+    private List<String> strbuf = new ArrayList<>();
     //分析出来的Token列表
-    private ArrayList<Token> tokenlist = new ArrayList<>();
+    private List<Token> tokenlist = new ArrayList<>();
 
     public LexicalAnalyzer(SymbolTable symbolTable) {
         this.symbolTable = symbolTable;

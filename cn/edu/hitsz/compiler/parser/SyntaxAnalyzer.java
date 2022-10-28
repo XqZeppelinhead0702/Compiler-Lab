@@ -114,6 +114,7 @@ public class SyntaxAnalyzer {
             switch (act.getKind()){
                 case Reduce -> {
                     Production pro = act.getProduction();
+//                    System.out.println(pro.toString());
                     callWhenInReduce(stats.peek(), pro);
                     for(int i=0; i<pro.body().size(); i++){
                         syms.pop();
@@ -124,9 +125,9 @@ public class SyntaxAnalyzer {
                 }
                 case Shift -> {
                     callWhenInShift(stats.peek(), tokensrc.get(0));
-                    tokensrc.remove(0);
                     syms.push(new Symbol(tokensrc.get(0)));
                     stats.push(act.getStatus());
+                    tokensrc.remove(0);
                 }
                 case Accept -> {
                     callWhenInAccept(stats.peek());
@@ -137,5 +138,9 @@ public class SyntaxAnalyzer {
                 }
             }
         }
+    }
+
+    public List<Token> getTokensrc() {
+        return tokensrc;
     }
 }
